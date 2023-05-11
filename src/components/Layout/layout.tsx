@@ -1,13 +1,17 @@
 import Head from "next/head";
 import Header from "./header";
-import { ReactNode } from "react";
+import { ReactNode, useContext } from "react";
 import NavBar from "./navbar";
+import { UserContext } from "@/context/userContext";
 
 type props = {
   children: ReactNode
 }
 
 const Layout: React.FC<props> = ({ children }) => {
+
+  const { user } = useContext(UserContext)
+
   return (
     <>
       <Head>
@@ -16,9 +20,9 @@ const Layout: React.FC<props> = ({ children }) => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Header />
+      {!user ? null : <Header />}
       {children}
-      <NavBar  />
+      {!user ? null : <NavBar />}
     </>
   );
 }

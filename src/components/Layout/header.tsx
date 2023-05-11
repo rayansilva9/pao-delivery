@@ -1,4 +1,6 @@
 import { usePathname } from "next/navigation";
+import { FaBars } from 'react-icons/fa'
+import { BiCartAlt } from 'react-icons/bi'
 
 
 
@@ -11,8 +13,12 @@ const Header: React.FC = () => {
   return (
     <>
       <div
-        style={{ display: page == "/signIn" || page == '/signUp' ? 'none' : 'inline' }}
-        className="fixed  top-0 w-full h-12 bg-blue-600"></div>
+        style={{ display: page == "/signIn" || page == '/signUp' ? 'none' : 'flex' }}
+        className="fixed top-0 w-full h-12 flex items-center justify-between px-5 py-3 ">
+        <FaBars style={{ fontSize: '1.5rem', }} />
+        <p className="font-semibold text-lg">HOME</p>
+        <BiCartAlt style={{ fontSize: '1.5rem', }} />
+      </div>
     </>
   );
 }
